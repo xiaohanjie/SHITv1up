@@ -11,5 +11,5 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export HOST_DEFAULT_IP="10.2.238.117"
-export LIBVIRT_DEFAULT_URI="qemu+ssh://root@10.2.238.117/system"
+#export HOST_DEFAULT_IP="10.2.238.117"
+#export LIBVIRT_DEFAULT_URI="qemu+ssh://root@10.2.238.117/system"

@@ -1,15 +1,5 @@
 FROM centos:centos7.6.1810
-# MAINTAINER siddontang@gmail.com
 
-# RUN apt-get -y -q update && \
-#        apt-get -y -q install software-properties-common && \
-#        apt-get -y -q update && \
-#        apt-get install -qqy \
-#        git \
-#        gnuplot \
-#        wget \
-#        less vim # not required by chaos itself, just for ease of use
-#
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\
@@ -38,16 +28,16 @@ RUN yum install -y bsdtar &&\
 #RUN systemctl start libvirtd
 #RUN systemctl enable libvirtd
 
-# You need to locate chaos in this directory (up.sh does that automatically)
-ADD vagrant /home/vagrant
 
-RUN rpm -ivh /home/vagrant/rpm/*
-RUN vagrant plugin install vagrant-libvirt
+#RUN rpm -ivh /home/vagrant/rpm/*
+#RUN vagrant plugin install vagrant-libvirt
 
 ADD ./bashrc /root/.bashrc
 
 ADD ./init.sh /init.sh
 RUN chmod +x /init.sh
+ADD ./install_jenkins_centos7.sh /install_jenkins_centos7.sh
+RUN chmod +x /install_jenkins_centos7.sh
 
 #RUN ./init.sh
 CMD ["/init.sh"]

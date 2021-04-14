@@ -5,11 +5,11 @@ x-node:
   env_file: ./secret/node.env
   privileged: true
   networks:
-    - chaos
+    - shit
 
 services:
   control:
-    container_name: chaos-control
+    container_name: shit-control
     hostname: control
     build: ./control
     env_file: ./secret/control.env
@@ -19,7 +19,7 @@ services:
     ports:
       - 8080:8080
     networks:
-      - chaos
+      - shit
 #  n1:
 #    << : *default-node
 #    container_name: chaos-n1
@@ -42,4 +42,4 @@ services:
 #    hostname: n5
 
 networks:
-  chaos:
+  shit:
